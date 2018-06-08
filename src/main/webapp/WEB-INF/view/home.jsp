@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,42 +60,65 @@
 			<thead>
 				<tr>
 					<th>Date</th>
+					<th>Time</th>
 					<th>Band</th>
 					<th>Venue</th>
 					<th>City</th>
 					<th>State</th>
-					<th>Tickets</th>
+					<th>Ticket Price</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<c:forEach var="tempEvent" items="${ events }">
+					<tr>
+						<td>
+							<div class="date">
+								<a href="#" class="date-btn"> <span class="binds"></span> <span
+									class="month">${ tempEvent.date.month }</span>
+									<h2 class="day">${ tempEvent.date.date }</h2>
+								</a>
+							</div>
+						</td>
+						<td><span class="time">${ tempEvent.date.time }</span></td>
+						<td><a href="#">${ tempEvent.artist }</a></td>
+						<td><a href="#">${ tempEvent.venue }</a></td>
+						<td><a href="#">${ tempEvent.city }</a></td>
+						<td><a href="#">${ tempEvent.state }</a></td>
+						<td><div class="btn btn-info">${ tempEvent.ticketPrice }</div></td>
+					</tr>
+				</c:forEach>
+				<!-- <tr>
 					<td>
-						<div class="date"><a href="#" class="date-btn">
-							<span class="binds"></span> 
-							<span class="month">Aug</span>
-							<h2 class="day">28</h2>
-						</a></div>
+						<div class="date">
+							<a href="#" class="date-btn"> <span class="binds"></span> <span
+								class="month">Aug</span>
+								<h2 class="day">28</h2>
+							</a>
+						</div>
 					</td>
+					<td><span class="time">8:00PM</td>
 					<td><a href="#">Blue Lake International Youth Orchestra</a></td>
 					<td><a href="#">Island Grove Regional Park</a></td>
 					<td><a href="#">New York City</a></td>
 					<td><a href="#">NY</a></td>
 					<td><div class="btn btn-info">Tickets</div></td>
 				</tr>
-				<tr>					
+				<tr>
 					<td>
-						<div class="date"><a href="#" class="date-btn">
-							<span class="binds"></span> 
-							<span class="month">Sep</span>
-							<h2 class="day">1</h2>
-						</a></div>
+						<div class="date">
+							<a href="#" class="date-btn"> <span class="binds"></span> <span
+								class="month">Sep</span>
+								<h2 class="day">1</h2>
+							</a>
+						</div>
 					</td>
+					<td><span class="time">7:00PM</span></td>
 					<td><a href="#">XYZ</a></td>
 					<td><a href="#">Red Rocks</a></td>
 					<td><a href="#">Denver</a></td>
 					<td><a href="#">CO</a></td>
 					<td><div class="btn btn-info">Tickets</div></td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>

@@ -1,20 +1,35 @@
 package com.ajax2012.musicevents.event;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="venues")
 public class Venue {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	private String venueName;
-	private EventAddress address;
+	private String streetAddress;
+	private String city;
+	private String state;
+	private int zip;
 	
 	public Venue() {}
 
-	public Venue(int id, String venueName, EventAddress address) {
+	public Venue(int id, String venueName, String streetAddress, String city, String state, int zip) {
 		this.id = id;
 		this.venueName = venueName;
-		this.address = address;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
 	}
 
 	public int getId() {
@@ -33,14 +48,35 @@ public class Venue {
 		this.venueName = venueName;
 	}
 
-	public EventAddress getAddress() {
-		return address;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setAddress(EventAddress address) {
-		this.address = address;
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
-	
-	
-	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getZip() {
+		return zip;
+	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
+	}	
 }

@@ -6,7 +6,6 @@ public class AppSpringMvcDispatcherServletInitializer extends AbstractAnnotation
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -2,15 +2,32 @@ package com.ajax2012.musicevents.event;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="events")
 public class Event {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
-	private String bandName;
+	
+	@Column(name="venue-name")
 	private Venue venue;
+	
+	@Column(name="artist")
+	private String bandName;
+	
+	@Column(name="event-date")
 	private Date date;
+	
+	@Column(name="ticket-price")
 	private int ticketPrice;
 	
 	public Event() {}
