@@ -8000,3 +8000,11 @@ td {
 	font-weight: 800;
 	font-color: red;
 }
+
+/* not working yet */
+.btn-ticket {
+	display: block !important;
+	width: 100px !important;
+	font-weight: bold !important;
+	color: red !important;
+}

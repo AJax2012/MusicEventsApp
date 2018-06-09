@@ -27,7 +27,7 @@ public class EventDAOImple implements EventDAO {
 		
 		// query events
 		Query<Event> theQuery = 
-				currentSession.createQuery("from events", Event.class);
+				currentSession.createQuery("from Event", Event.class);
 		
 		List<Event> events = theQuery.getResultList();
 				

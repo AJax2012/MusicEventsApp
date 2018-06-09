@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -61,7 +62,7 @@
 				<tr>
 					<th>Date</th>
 					<th>Time</th>
-					<th>Band</th>
+					<th>Artist</th>
 					<th>Venue</th>
 					<th>City</th>
 					<th>State</th>
@@ -69,22 +70,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="tempEvent" items="${ events }">
+				<c:forEach var="tempEvent" items="${events}">
 					<tr>
 						<td>
 							<div class="date">
 								<a href="#" class="date-btn"> <span class="binds"></span> <span
-									class="month">${ tempEvent.date.month }</span>
-									<h2 class="day">${ tempEvent.date.date }</h2>
+									class="month"><fmt:formatDate value="${tempEvent.date}" pattern="MMM" /></span>
+									<h2 class="day"><fmt:formatDate value="${tempEvent.date}" pattern="dd" /></h2>
 								</a>
 							</div>
 						</td>
-						<td><span class="time">${ tempEvent.date.time }</span></td>
-						<td><a href="#">${ tempEvent.artist }</a></td>
-						<td><a href="#">${ tempEvent.venue }</a></td>
-						<td><a href="#">${ tempEvent.city }</a></td>
-						<td><a href="#">${ tempEvent.state }</a></td>
-						<td><div class="btn btn-info">${ tempEvent.ticketPrice }</div></td>
+						<td><span class="time"><fmt:formatDate value="${tempEvent.date}" pattern="h:mm a" /></span></td>
+						<td><a href="#">${tempEvent.artist.artistName}</a></td>
+						<td><a href="#">${tempEvent.venue.venueName}</a></td>
+						<td><a href="#">${tempEvent.venue.city}</a></td>
+						<td><a href="#">${tempEvent.venue.state}</a></td>
+						<td><div class="btn btn-info btn-ticket">$${tempEvent.ticketPrice}</div></td>
 					</tr>
 				</c:forEach>
 				<!-- <tr>

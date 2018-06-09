@@ -1,30 +1,51 @@
 package com.ajax2012.musicevents.groups;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.ajax2012.musicevents.event.Event;
+
 @Entity
-@Table(name="artists")
+@Table(name = "artists")
 public class Artist {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	private String groupName;
-	private String genre;
-	private String description;
-	private String tourName;
-	
-	public Artist() {}
 
-	public Artist(int id, String groupName, String genre, String description, String tourName) {
+	@Column(name = "artist_name")
+	private String artistName;
+
+	@Column(name = "genre")
+	private String genre;
+
+	@Column(name = "description")
+	private String description;
+
+	@Column(name = "tour_name")
+	private String tourName;
+
+	@OneToMany(mappedBy = "artist", 
+			   cascade = { CascadeType.PERSIST, CascadeType.MERGE, 
+					   	   CascadeType.DETACH,	CascadeType.REFRESH })
+	private List<Event> events;
+
+	public Artist() {
+	}
+
+	public Artist(int id, String artistName, String genre, String description, String tourName) {
 		this.id = id;
-		this.groupName = groupName;
+		this.artistName = artistName;
 		this.genre = genre;
 		this.description = description;
 		this.tourName = tourName;
@@ -38,12 +59,12 @@ public class Artist {
 		this.id = id;
 	}
 
-	public String getGroupName() {
-		return groupName;
+	public String getArtistName() {
+		return artistName;
 	}
 
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
 	}
 
 	public String getGenre() {
@@ -69,6 +90,24 @@ public class Artist {
 	public void setTourName(String tourName) {
 		this.tourName = tourName;
 	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 	
-	
+	public void add(Event tempEvent) {
+		
+		if (events == null) {
+			events = new ArrayList<>();
+		}
+		
+		events.add(tempEvent);
+		
+		tempEvent.setArtist(this);;
+	}
+
 }

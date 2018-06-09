@@ -29,4 +29,7 @@ hs_err_pid*
 .springBeans
 
 # Test folders
-*musicevents.dbtest/*
+*dbtest/*
+
+# Properties files
+persistence-mysql.properties

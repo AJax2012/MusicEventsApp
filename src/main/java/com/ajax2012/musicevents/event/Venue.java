@@ -1,27 +1,47 @@
 package com.ajax2012.musicevents.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="venues")
+@Table(name = "venues")
 public class Venue {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+
+	@Column(name = "venue_name")
 	private String venueName;
+
+	@Column(name = "street_address")
 	private String streetAddress;
+
+	@Column(name = "city")
 	private String city;
+
+	@Column(name = "state")
 	private String state;
+
+	@Column(name = "zip")
 	private int zip;
-	
-	public Venue() {}
+
+	public Venue() {
+	}
+
+	@OneToMany(mappedBy = "venue", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	private List<Event> events;
 
 	public Venue(int id, String venueName, String streetAddress, String city, String state, int zip) {
 		this.id = id;
@@ -78,5 +98,24 @@ public class Venue {
 
 	public void setZip(int zip) {
 		this.zip = zip;
-	}	
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public void add(Event tempEvent) {
+
+		if (events == null) {
+			events = new ArrayList<>();
+		}
+
+		events.add(tempEvent);
+
+		tempEvent.setVenue(this);
+	}
 }
