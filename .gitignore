@@ -32,4 +32,4 @@ hs_err_pid*
 *dbtest/*
 
 # Properties files
-persistence-mysql.properties
+*persistence-mysql.properties
