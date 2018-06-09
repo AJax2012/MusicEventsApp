@@ -1,4 +1,4 @@
-package com.ajax2012.musicevents.event;
+package com.ajax2012.musicevents.entity;
 
 import java.util.ArrayList;
 import java.util.List;

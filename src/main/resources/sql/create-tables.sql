@@ -82,7 +82,7 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `events` VALUES
-	(1, 'Red Rocks', 1, 'Yo-Yo Ma', 1,'2018_07_01 19:30:00', 100.00,
+	(1, 'Red Rocks', 1, 'Yo-Yo Ma', 1,'2018_08_01 19:30:00', 100.00,
 		'Bach Cello Suites, Dvorak Cello Concerto and much more!'),
         
 	(2, 'Pepsi Center', 3, 'Imagine Dragons', 2, '2018_07_10 20:00:00', 75.00,
@@ -94,7 +94,7 @@ INSERT INTO `events` VALUES
 	(4, 'Red Rocks', 1, 'Imagine Dragons', 2, '2018_07_20 20:30:00', 80.00,
 		'All of the songs on their new hit album, Evolve! Plus, everyone\'s favorites, such as "Breathing in the Chemicals", "Demons", "Believer", and more!'),
         
-	(5, 'Fox Theater', 4, 'New York Philharmonic', 3, '2018_08_01 18:30:00', 30.00,
+	(5, 'Fox Theater', 4, 'New York Philharmonic', 3, '2018_07_01 18:30:00', 30.00,
 		'Come listen to the New York Phil play some of America\s favorite compositions, such as Dvorak\'s American Symphony (no. 8).'),
         
 	(6, 'Stagecrafters Baldwin Theater', 5, 'Ben Sollee', 5, '2018_08_03 19:00:00', 15.00,

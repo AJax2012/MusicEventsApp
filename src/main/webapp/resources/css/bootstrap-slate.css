@@ -8006,5 +8006,18 @@ td {
 	display: block !important;
 	width: 100px !important;
 	font-weight: bold !important;
-	color: red !important;
+}
+
+.container-add {
+	width: 3em;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+	float: left;
+	right: 90px;
+	display: inline;
+}
+
+.btn-add {
+	height: 50px !important;
 }

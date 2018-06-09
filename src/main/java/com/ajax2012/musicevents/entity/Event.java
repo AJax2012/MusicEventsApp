@@ -1,4 +1,4 @@
-package com.ajax2012.musicevents.event;
+package com.ajax2012.musicevents.entity;
 
 import java.util.Date;
 
@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.ajax2012.musicevents.groups.Artist;
 
 @Entity
 @Table(name="events")

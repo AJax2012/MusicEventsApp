@@ -1,0 +1,105 @@
+.box {
+	margin: 10px auto;
+	width: 300px;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.box>*:first-child {
+    align-content: left;
+}
+
+.box>*:last-child {
+	align-content: right;
+}
+
+.container-search {
+	width: 3em;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+	left: 90px;
+}
+
+.container-search input#search {
+	width: 300px;
+	height: 50px;
+	background: #2b303b;
+	border: none;
+	font-size: 10pt;
+	float: left;
+	color: #63717f;
+	padding-left: 45px;	
+	border-radius: 5px;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	-webkit-transition: background .55s ease;
+	-moz-transition: background .55s ease;
+	-ms-transition: background .55s ease;
+	-o-transition: background .55s ease;
+	transition: background .55s ease;
+}
+
+.container-search input#search::-webkit-input-placeholder {
+	color: #65737e;
+}
+
+.container-search input#search:-moz-placeholder {
+	/* Firefox 18- */
+	color: #65737e;
+}
+
+.container-search input#search::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #65737e;
+}
+
+.container-search input#search:-ms-input-placeholder {
+	color: #65737e;
+}
+
+.container-search .icon {
+	position: absolute;
+	top: -.1%;
+	margin-left: 17px;
+	margin-top: 17px;
+	z-index: 1;
+	color: #4f5b66;
+}
+
+.container-search input#search:hover, .container-search input#search:focus,
+	.container-search input#search:active {
+	outline: none;
+	background: #ffffff;
+}
+
+#btn-search {
+	height: 50px;
+}
+
+.btn-ticket {
+	display: block !important;
+	width: 100px !important;
+	font-weight: bold !important;
+	color: white !important;
+}
+
+.container-add {
+	width: 3em;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+	float: left;
+	right: 90px;
+	display: inline;
+}
+
+.btn-add {
+	height: 50px !important;
+	right: -100px;
+}

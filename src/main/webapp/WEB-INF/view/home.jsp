@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,6 +12,10 @@
 	href="resources/css/bootstrap-slate.css">
 <link rel="stylesheet" type="text/css"
 	href="resources/css/time-icon.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/search-box.css">
+<link rel="stylesheet" type="text/css"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 <script type="text/javascript" src="time-icon.js"></script>
 
@@ -56,6 +61,26 @@
 	</nav>
 	<!-- END NAV BAR -->
 
+	<!-- BEGIN SEARCH BOX -->
+	<!-- add customer button -->
+	<div class="box">
+		<div class="container-add">
+			<input type="button" value="Add Event"
+				onclick="window.location.href='showFormForAddEvent'; return false;"
+				class="btn btn-success btn-add"/>
+		</div>
+		<div class="container-search">
+			<span class="icon"><i class="fa fa-search"></i></span>
+			<form:form action="search" method="POST">
+				<input type="search" id="search" name="theSearchEvents" />
+				<input type="submit" value="Search" class="btn btn-success"
+					id="btn-search" />
+			</form:form>
+		</div>
+	</div>
+	<!-- END SEARCH -->
+
+	<!-- BEGIN TABLE -->
 	<div class="container">
 		<table class="table table-striped table-hover ">
 			<thead>
@@ -75,17 +100,21 @@
 						<td>
 							<div class="date">
 								<a href="#" class="date-btn"> <span class="binds"></span> <span
-									class="month"><fmt:formatDate value="${tempEvent.date}" pattern="MMM" /></span>
-									<h2 class="day"><fmt:formatDate value="${tempEvent.date}" pattern="dd" /></h2>
+									class="month"><fmt:formatDate value="${tempEvent.date}"
+											pattern="MMM" /></span>
+									<h2 class="day">
+										<fmt:formatDate value="${tempEvent.date}" pattern="dd" />
+									</h2>
 								</a>
 							</div>
 						</td>
-						<td><span class="time"><fmt:formatDate value="${tempEvent.date}" pattern="h:mm a" /></span></td>
+						<td><span class="time"><fmt:formatDate
+									value="${tempEvent.date}" pattern="h:mm a" /></span></td>
 						<td><a href="#">${tempEvent.artist.artistName}</a></td>
 						<td><a href="#">${tempEvent.venue.venueName}</a></td>
 						<td><a href="#">${tempEvent.venue.city}</a></td>
 						<td><a href="#">${tempEvent.venue.state}</a></td>
-						<td><div class="btn btn-info btn-ticket">$${tempEvent.ticketPrice}</div></td>
+						<td><div class="btn btn-success btn-ticket">$${tempEvent.ticketPrice}</div></td>
 					</tr>
 				</c:forEach>
 				<!-- <tr>
