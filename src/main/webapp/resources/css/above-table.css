@@ -1,19 +1,7 @@
 .box {
 	margin: 10px auto;
-	width: 300px;
+	width: 97%;
 	height: 50px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-}
-
-.box>*:first-child {
-    align-content: left;
-}
-
-.box>*:last-child {
-	align-content: right;
 }
 
 .container-search {
@@ -21,7 +9,8 @@
 	vertical-align: middle;
 	white-space: nowrap;
 	position: relative;
-	left: 90px;
+	float: right;
+	right: 28.5%;
 }
 
 .container-search input#search {
@@ -80,6 +69,7 @@
 
 #btn-search {
 	height: 50px;
+	white-space: wrap;
 }
 
 .btn-ticket {
@@ -89,17 +79,6 @@
 	color: white !important;
 }
 
-.container-add {
-	width: 3em;
-	vertical-align: middle;
-	white-space: nowrap;
-	position: relative;
-	float: left;
-	right: 90px;
-	display: inline;
-}
-
 .btn-add {
 	height: 50px !important;
-	right: -100px;
 }

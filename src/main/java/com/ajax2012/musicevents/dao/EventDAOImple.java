@@ -95,5 +95,32 @@ public class EventDAOImple implements EventDAO {
 		
 		return events;
 	}
+	
+//	@SuppressWarnings("unchecked")
+//	public List<Event> resetSearchEvents(String theSearchEvents) {
+//
+//		// get current hibernate session
+//		Session currentSession = sessionFactory.getCurrentSession();
+//
+//		Query theQuery = null;
+//		
+//		/*
+//		 * only search by name if theSearch is not empty
+//		 */
+//		
+//		if (theSearchEvents != null && theSearchEvents.trim().length() > 0) {
+//			theQuery = currentSession.createQuery("from Event", Event.class);
+//            theQuery.setParameter("theSearchEvent", "%" + theSearchEvents.toLowerCase() + "%");
+//		} else {
+//			
+//			// theSearchName is empty ... so just get all customers
+//            theQuery =currentSession.createQuery("from Event", Event.class);
+//		}
+//		
+//		// execute query and get result list
+//		List<Event> events = theQuery.getResultList();
+//		
+//		return events;
+//	}
 
 }

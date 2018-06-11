@@ -13,75 +13,55 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/css/time-icon.css">
 <link rel="stylesheet" type="text/css"
-	href="resources/css/search-box.css">
+	href="resources/css/above-table.css">
 <link rel="stylesheet" type="text/css"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-<script type="text/javascript" src="time-icon.js"></script>
+
 
 <title>Music Events App</title>
 
 </head>
 <body>
-	<!-- BEGIN NAV BAR -->
-	<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Music Events App</a>
-		</div>
+	<!-- NAV BAR -->
+	<jsp:include page="navbar.jsp" />
 
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<!-- DROPDOWN -->
-				<!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-						<span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-						<li class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul></li> -->
-			</ul>
-		</div>
-	</div>
-	</nav>
-	<!-- END NAV BAR -->
-
-	<!-- BEGIN SEARCH BOX -->
-	<!-- add customer button -->
-	<div class="box">
-		<div class="container-add">
-			<input type="button" value="Add Event"
-				onclick="window.location.href='showFormForAddEvent'; return false;"
-				class="btn btn-success btn-add"/>
-		</div>
-		<div class="container-search">
-			<span class="icon"><i class="fa fa-search"></i></span>
-			<form:form action="search" method="POST">
-				<input type="search" id="search" name="theSearchEvents" />
-				<input type="submit" value="Search" class="btn btn-success"
-					id="btn-search" />
-			</form:form>
-		</div>
-	</div>
-	<!-- END SEARCH -->
-
-	<!-- BEGIN TABLE -->
+	<!-- BEGIN BODY -->
 	<div class="container">
+		<div class="row">
+			<!-- add event button -->
+			<div class="box">
+				<input type="button" value="Add Event" class="btn btn-success"
+					id="add-event-button"
+					onclick="window.location.href='showFormForAddEvent'; return false;" />
+
+				<input type="button" value="Add Artist" class="btn btn-success"
+					id="add-artist-button"
+					onclick="window.location.href='showFormForAddArtist'; return false;" />
+
+				<input type="button" value="Add Venue" class="btn btn-success"
+					id="add-venue-button"
+					onclick="window.location.href='showFormForAddVenue'; return false;" />
+
+				<!-- BEGIN SEARCH BOX -->
+				<div class="container-search">
+					<span class="icon"><i class="fa fa-search"></i></span>
+					<form:form action="search" method="POST">
+						<input type="search" id="search" name="theSearchEvents" />
+						<input type="submit" value="Search" class="btn btn-success"
+							id="btn-search" />
+					</form:form>
+				</div>
+			</div>
+		</div>
+		<!-- END SEARCH -->
+
+		<!-- PARTIALS: todo -->
+		<%-- <div id="event-form-modal" class="modal hide fade in " data-url="@Url.Action('showFormForAddEvent')">
+			<div id="event-form-container"><jsp:include page="forms/event-form.jsp"></jsp:include></div>
+		</div> --%>
+
+		<!-- BEGIN TABLE -->
 		<table class="table table-striped table-hover ">
 			<thead>
 				<tr>
@@ -108,7 +88,7 @@
 								</a>
 							</div>
 						</td>
-						<td><span class="time"><fmt:formatDate
+						<td><span class="time"> <fmt:formatDate
 									value="${tempEvent.date}" pattern="h:mm a" /></span></td>
 						<td><a href="#">${tempEvent.artist.artistName}</a></td>
 						<td><a href="#">${tempEvent.venue.venueName}</a></td>
@@ -117,38 +97,7 @@
 						<td><div class="btn btn-success btn-ticket">$${tempEvent.ticketPrice}</div></td>
 					</tr>
 				</c:forEach>
-				<!-- <tr>
-					<td>
-						<div class="date">
-							<a href="#" class="date-btn"> <span class="binds"></span> <span
-								class="month">Aug</span>
-								<h2 class="day">28</h2>
-							</a>
-						</div>
-					</td>
-					<td><span class="time">8:00PM</td>
-					<td><a href="#">Blue Lake International Youth Orchestra</a></td>
-					<td><a href="#">Island Grove Regional Park</a></td>
-					<td><a href="#">New York City</a></td>
-					<td><a href="#">NY</a></td>
-					<td><div class="btn btn-info">Tickets</div></td>
-				</tr>
-				<tr>
-					<td>
-						<div class="date">
-							<a href="#" class="date-btn"> <span class="binds"></span> <span
-								class="month">Sep</span>
-								<h2 class="day">1</h2>
-							</a>
-						</div>
-					</td>
-					<td><span class="time">7:00PM</span></td>
-					<td><a href="#">XYZ</a></td>
-					<td><a href="#">Red Rocks</a></td>
-					<td><a href="#">Denver</a></td>
-					<td><a href="#">CO</a></td>
-					<td><div class="btn btn-info">Tickets</div></td>
-				</tr> -->
+
 			</tbody>
 		</table>
 	</div>

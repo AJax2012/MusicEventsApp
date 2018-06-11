@@ -1,10 +1,12 @@
 package com.ajax2012.musicevents.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,10 +61,10 @@ public class HomeController {
 	@PostMapping("/saveEvent")
 	public String saveEvent(@ModelAttribute("event") Event theEvent) {
 
-		// save the customer using our service
+		// save the event using our service
 		eventService.saveEvent(theEvent);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 
 	/*
@@ -87,7 +89,7 @@ public class HomeController {
 		// delete the event
 		eventService.deleteEvent(theId);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 
 	@PostMapping("/search")
@@ -105,13 +107,26 @@ public class HomeController {
 	/*
 	 * must fix this! do not have a form VENUE
 	 */
+	
+	@GetMapping("/venues")
+	public String listVenues(Model theModel) {
+
+		// pull from EventDAOImple -> getEvents method. Lists all events
+		List<Venue> theVenues = venueService.getVenues();
+
+		// adds result of previous queries to the Model
+		theModel.addAttribute("venues", theVenues);
+
+		return "event-form";
+	}
+	
 	@PostMapping("/saveVenue")
 	public String saveVenue(@ModelAttribute("venue") Venue theVenue) {
 
 		// save the venue using our service
 		venueService.saveVenue(theVenue);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 
 	/*
@@ -136,9 +151,27 @@ public class HomeController {
 		// delete the event
 		venueService.deleteVenue(theId);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
+	
+	/*
+	 * FIX THIS ONE
+	 * ASAP
+	 * LIKE NOW
+	 * HAHAHA
+	 */
+	@GetMapping("/listArtists")
+	public String listArtists(Model theModel) {
 
+		// pull from EventDAOImple -> getEvents method. Lists all events
+		List<Artist> theArtists = artistService.getArtists();
+
+		// adds result of previous queries to the Model
+		theModel.addAttribute("artists", theArtists);
+		
+		return "event-form";
+	}
+	
 	/*
 	 * must fix this! do not have a form ARTIST
 	 */
@@ -148,7 +181,7 @@ public class HomeController {
 		// save the customer using our service
 		artistService.saveArtist(theArtist);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 
 	/*
@@ -173,7 +206,7 @@ public class HomeController {
 		// delete the event
 		artistService.deleteArtist(theId);
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 
 }

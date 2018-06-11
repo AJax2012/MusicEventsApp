@@ -1,5 +1,7 @@
 package com.ajax2012.musicevents.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,6 +15,18 @@ public class ArtistDAOImpl implements ArtistDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	@Override
+	public List<Artist> getArtists() {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Artist> theQuery = currentSession.createQuery("from Artist order by artistName", Artist.class);
+		
+		List<Artist> artists = theQuery.getResultList();
+		
+		return artists;
+	}
 
 	@Override
 	public void saveArtist(Artist theArtist) {

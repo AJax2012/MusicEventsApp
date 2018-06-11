@@ -1,5 +1,6 @@
 package com.ajax2012.musicevents.dao;
 
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +15,20 @@ public class VenueDAOImpl implements VenueDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	@Override
+	public List<Venue> getVenues() {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// query events -> sort by date
+		Query<Venue> theQuery = currentSession.createQuery("from Venue order by venueName", Venue.class);
+
+		List<Venue> venues = theQuery.getResultList();
+
+		// return list of events
+		return venues;
+	}
 
 	@Override
 	public void saveVenue(Venue theVenue) {
